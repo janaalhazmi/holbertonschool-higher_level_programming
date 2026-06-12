@@ -3,11 +3,13 @@
 
 
 def matrix_divided(matrix, div):
-    """Divide all elements of a matrix."""
+    """Return a new matrix with all elements divided by div."""
     error = "matrix must be a matrix (list of lists) of integers/floats"
 
-    if (not isinstance(matrix, list) or len(matrix) == 0 or
-            not all(isinstance(row, list) for row in matrix)):
+    if not isinstance(matrix, list) or matrix == []:
+        raise TypeError(error)
+
+    if not all(isinstance(row, list) for row in matrix):
         raise TypeError(error)
 
     row_len = len(matrix[0])
