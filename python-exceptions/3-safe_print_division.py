@@ -1,14 +1,13 @@
 #!/usr/bin/python3
 
-def safe_print_list_integers(my_list=[], x=0):
-    count = 0
+def safe_print_division(a, b):
+    result = None
 
-    for i in range(x):
-        try:
-            print("{:d}".format(my_list[i]), end="")
-            count += 1
-        except (ValueError, TypeError):
-            pass
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        pass
+    finally:
+        print("Inside result: {}".format(result))
 
-    print()
-    return count
+    return result
