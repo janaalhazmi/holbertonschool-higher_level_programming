@@ -7,9 +7,16 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    text = text.strip()
+    skip = False
 
     for char in text:
+        if skip and char == " ":
+            continue
+
+        skip = False
+
         print(char, end="")
+
         if char in ".?:":
             print("\n")
+            skip = True
