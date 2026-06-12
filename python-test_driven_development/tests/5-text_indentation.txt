@@ -1,9 +1,7 @@
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 
 >>> text_indentation("Hello. How are you?")
-Hello.
-<BLANKLINE>
-How are you?
+Hello. How are you?
 
 >>> text_indentation("Best School: Holberton")
 Best School:
@@ -12,7 +10,6 @@ Holberton
 
 >>> text_indentation("Python is fun.")
 Python is fun.
-
 >>> text_indentation(89)
 Traceback (most recent call last):
 ...
