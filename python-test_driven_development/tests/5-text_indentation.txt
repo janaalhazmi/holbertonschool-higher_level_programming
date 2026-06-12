@@ -2,12 +2,12 @@
 
 >>> text_indentation("Hello. How are you?")
 Hello.
-
+<BLANKLINE>
 How are you?
 
 >>> text_indentation("Best School: Holberton")
 Best School:
-
+<BLANKLINE>
 Holberton
 
 >>> text_indentation("Python is fun.")
