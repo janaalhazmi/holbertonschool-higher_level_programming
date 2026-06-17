@@ -4,12 +4,13 @@
 
 class Rectangle:
     """Rectangle class."""
+    number_of_instances = 0
 
     def __init__(self, width=0, height=0):
         """Initialize rectangle."""
         self.width = width
         self.height = height
-
+        Rectangle.number_of_instances += 1
     @property
     def width(self):
         """Retrieve width."""
@@ -73,3 +74,4 @@ class Rectangle:
     def __del__(self):
         """Return a Goodbye message when the rectangle has been deleted"""
         print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
