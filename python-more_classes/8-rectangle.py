@@ -77,7 +77,7 @@ class Rectangle:
         """Return a Goodbye message when the rectangle has been deleted"""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
-     
+
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         if not isinstance(rect_1, Rectangle):
@@ -88,5 +88,3 @@ class Rectangle:
             return rect_1
         else:
             return rect_2
-
-
