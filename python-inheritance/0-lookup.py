@@ -3,4 +3,5 @@
 
 def lookup(obj):
 """this is the method for the modul"""
+    
     return dir(obj)
