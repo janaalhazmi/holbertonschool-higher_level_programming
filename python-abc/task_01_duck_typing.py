@@ -1,58 +1,63 @@
-#!/usr/bin/env python3
-"""Shapes module."""
-
+#!/usr/bin/python3
+"""Module containing Shape class and its inheritances"""
 from abc import ABC, abstractmethod
 from math import pi
 
 
 class Shape(ABC):
-    """Abstract base class for shapes."""
+    """The Shape class"""
 
     @abstractmethod
     def area(self):
-        """Return area of shape."""
+        """Method for area"""
         pass
 
     @abstractmethod
     def perimeter(self):
-        """Return perimeter of shape."""
+        """Method for perimeter"""
         pass
 
 
 class Circle(Shape):
-    """Circle class."""
+    """The Circle class inherited from Shape"""
 
     def __init__(self, radius):
-        """Initialize circle."""
-        self.radius = radius
+        """Initialization wih radius"""
+        self.radius = abs(radius)
 
     def area(self):
-        """Return area of circle."""
+        """Returning duck area"""
         return pi * self.radius ** 2
 
     def perimeter(self):
-        """Return perimeter of circle."""
-        return 2 * pi * self.radius
+        """Returning perimeter area"""
+        return pi * self.radius * 2
 
 
 class Rectangle(Shape):
-    """Rectangle class."""
+    """The Rectangle class inherited from Shape"""
 
     def __init__(self, width, height):
-        """Initialize rectangle."""
+        """Initialization wih width and height"""
         self.width = width
         self.height = height
 
     def area(self):
-        """Return area of rectangle."""
+        """Returning duck area"""
         return self.width * self.height
 
     def perimeter(self):
-        """Return perimeter of rectangle."""
+        """Returning perimeter area"""
         return 2 * (self.width + self.height)
 
 
-def shape_info(shape):
-    """Print shape information."""
-    print(f"Area: {shape.area()}")
-    print(f"Perimeter: {shape.perimeter()}")
+def shape_info(obj):
+    """Function to give shape info"""
+
+    # Calculating the area and perimeter
+    area = obj.area()
+    perimeter = obj.perimeter()
+
+    # Printing the area and perimeter
+    print(f"Area: {area}")
+    print(f"Perimeter: {perimeter}")
