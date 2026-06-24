@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Shapes module."""
 
+
 from abc import ABC, abstractmethod
 from math import pi
 
