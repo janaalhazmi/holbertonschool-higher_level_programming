@@ -12,21 +12,43 @@ def print_stats():
     for code in sorted(status_codes.keys()):
         if status_codes[code] != 0:
             print("{}: {}".format(code, status_codes[code]))
-try:
-    for line in sys.stdin:
-            parts = line.split()
+def main():
+
+    """Read stdin and compute metrics."""
+
+    global total_size
+
+    global line_count
+
+    try:
+
+        for line in sys.stdin:
+
             try:
+
+                parts = line.split()
+
                 status = int(parts[-2])
+
                 size = int(parts[-1])
+
                 total_size += size
+
                 if status in status_codes:
+
                     status_codes[status] += 1
+
                 line_count += 1
+
                 if line_count % 10 == 0:
+
                     print_stats()
-            except (IndexError, ValueError):
+
+            except (ValueError, IndexError):
                 continue
-except KeyboardInterrupt:
+    except KeyboardInterrupt:
+        print_stats()
+        raise
     print_stats()
-    raise
-print_stats()
+if __name__ == "__main__":
+    main()
