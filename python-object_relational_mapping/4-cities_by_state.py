@@ -1,36 +1,25 @@
 #!/usr/bin/python3
-"""Module: query database with MySQLdb."""
+"""list city"""
 
-import MySQLdb
-from sys import argv
+if __name__ == '__main__':
+    from sys import argv
+    import MySQLdb
 
-
-def query_database(username: str, password: str, database: str) -> None:
-    """Query database with given parameters."""
     db = MySQLdb.connect(
-        host="Localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=database,
+        user=argv[1],
+        password=argv[2],
+        database=argv[3]
     )
     cursor = db.cursor()
 
-    cursor.execute(
-        "SELECT cities.id, cities.name, states.name "
-        "FROM cities "
-        "INNER JOIN states "
-        "ON cities.state_id = states.id "
-        "ORDER BY cities.id ASC"
-    )
-    rows = cursor.fetchall()
+    cursor.execute('SELECT c.id, c.name, s.name \
+                    FROM cities AS c \
+                    INNER JOIN states AS s ON s.id = c.state_id ')
 
-    for row in rows:
-        print(row)
+    for state in cursor.fetchall():
+        print(state)
 
-    cursor.close()
-    db.close()
-
-
-if __name__ == "__main__":
-    query_database(argv[1], argv[2], argv[3])
+    if cursor:
+        cursor.close()
+    if db:
+        db.close()
