@@ -1,10 +1,7 @@
 #!/usr/bin/python3
 """Lists all values."""
-
 import MySQLdb
 import sys
-
-
 if __name__ == "__main__":
     db = MySQLdb.connect(
         host="localhost",
@@ -13,17 +10,12 @@ if __name__ == "__main__":
         passwd=sys.argv[2],
         db=sys.argv[3]
     )
-
     cursor = db.cursor()
-
     cursor.execute(
-        "SELECT * FROM states WHERE name = '{}'"
+        "SELECT * FROM states WHERE name = '{}' "
         "ORDER BY id ASC".format(sys.argv[4]))
-
     rows = cursor.fetchall()
-
     for row in rows:
         print(row)
-
     cursor.close()
     db.close()
