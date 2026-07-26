@@ -1,17 +1,27 @@
 #!/usr/bin/python3
-"""Lists states"""
+"""Module for Selecting states where name equals argument(safe)"""
 
-import MySQLdb
-from sys import argv
+if __name__ == '__main__':
+    from sys import argv
+    import MySQLdb
 
-if __name__ == "__main__":
-    conn = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
-                           passwd=argv[2], db=argv[3], charset="utf8")
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY states.id ASC",
-                (argv[4], ))
-    query_rows = cur.fetchall()
-    for row in query_rows:
-        print(row)
-    cur.close()
-    conn.close()
+    db = MySQLdb.connect(
+        user=argv[1],
+        password=argv[2],
+        database=argv[3]
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * \
+                    FROM `states` \
+                    ORDER BY id")
+
+    for state in cursor.fetchall():
+        if state[1] == argv[4]:
+            print(state)
+
+    if cursor:
+        cursor.close()
+    if db:
+        db.close()
