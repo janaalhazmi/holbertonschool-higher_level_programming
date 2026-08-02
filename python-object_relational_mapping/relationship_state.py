@@ -2,12 +2,13 @@
 """State model with relationship"""
 
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship
 
-Base = declarative_base()
+from model_state import Base
 
 
 class State(Base):
+    """State class"""
     __tablename__ = "states"
 
     id = Column(Integer, primary_key=True,
